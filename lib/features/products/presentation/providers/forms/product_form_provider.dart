@@ -31,6 +31,7 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
       slug: Slug.dirty(product.slug),
       price: Price.dirty(product.price),
       inStock: Stock.dirty(product.stock),
+      description: product.description,
       sizes: product.sizes,
       gender: product.gender,      
       tags: product.tags.join(', '),
@@ -76,6 +77,12 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
         Price.dirty(state.price.value),
         Stock.dirty(state.inStock.value),
       ])
+    );
+  }
+
+  void updateProductImage(String path){
+    state = state.copyWith(
+      images: [...state.images, path]
     );
   }
 
